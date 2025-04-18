@@ -43,14 +43,14 @@ name.addEventListener("input",()=>{
     emailerror.style.fontSize="15px";
     isvalid=false;
  }
- else if(!emailval.includes("@"))
+ else if(!emailval.endsWith("@gmail.com"))
     {
         emailerror.innerHTML="Email is not valid";
         isvalid=false;
     }
   
     email.addEventListener("input",()=>{
-        if(email!=="" || email.includes=="@")
+        if(email!=="" || email.endsWith("@gmail.com"))
         {
             emailerror.textContent="";
         }
@@ -63,6 +63,7 @@ name.addEventListener("input",()=>{
        passerror.style.color="red";
        passerror.style.fontSize="15px";
        isvalid=false;
+
     }
     else if(passval.length<8)
     {
@@ -80,16 +81,27 @@ name.addEventListener("input",()=>{
   
     
 
-
-    if(isvalid)
-        {
-            alert("form submited");
-           name.value="";
-           email.value="";
-           pass.value="";
-        }
+    if (isvalid) {
+        // Show success message
         
-    
+            const successMessage = document.createElement('div');
+            successMessage.textContent = "Sign up successfully!";
+            successMessage.style.color = 'green';
+            successMessage.style.fontSize = '18px';
+            successMessage.style.marginTop = '20px';
+            document.body.appendChild(successMessage);
+       
+        
+        setTimeout(()=>{
+            successMessage.style.display="none";
+
+         },4000);
+    alert("Sign up successfully!");
+        // Reset form values
+        name.value = "";
+        email.value = "";
+        pass.value = "";
+    }
 
 
 
